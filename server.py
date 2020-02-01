@@ -171,7 +171,15 @@ def on_messages_dashboard():
     followed_ids = [data['followed_id'] for data in followed_users]
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT users.user_id, users.first_name, users.last_name FROM users WHERE users.user_id != %(u_id)s"
+    query = "SELECT follower_id FROM followers WHERE followed_id = %(u_id)s"
+    data = {
+        'u_id': session['user_id']
+    }
+    follower_users = mysql.query_db(query, data)
+    follower_ids = [data['follower_id'] for data in follower_users]
+
+    mysql = connectToMySQL(DATABASE)
+    query = "SELECT users.user_id, users.first_name, users.last_name, users.avatar FROM users WHERE users.user_id != %(u_id)s"
     data = {
         'u_id': session['user_id']
     }
@@ -266,7 +274,7 @@ def on_messages_dashboard():
 
     # return render_template("thoughts.html", user_data=user_data, messages=messages, liked_messages=liked_messages)
 
-    return render_template("dashboard.html", user_data=user_data, whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, followed_ids=followed_ids)
+    return render_template("dashboard.html", user_data=user_data, whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, users = users, followed_ids=followed_ids, follower_ids = follower_ids)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -438,6 +446,7 @@ def user_profile(user_id):
         'u_id': user_id
     }
     user_data = mysql.query_db(query, data)
+    
     return render_template("profile.html", user_data = user_data[0])
 
 @app.route("/contact_us")

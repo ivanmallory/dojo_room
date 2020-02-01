@@ -67,7 +67,11 @@
             <div class="col p-3 mx-3">
                 <h5>Ninjas Who Follow You:</h5>
                 <!-- <img class="mt-4 ml-5" src="../images/dojo.jpeg" width="100px" height="100px"> -->
-                <img class="mt-4 ml-5 img-thumbnail" src="/static/images/{{user_data['avatar']}}" width="100px" height="100px">
+                {% for user in users %}
+                    {% if user['user_id'] in follower_ids %}
+                        <a href="/user_profile/{{user['user_id']}}"><img class="img-thumbnail img-fluid" src="/static/images/{{user['avatar']}}" alt="Hello World" width="100px" height="100px"></a>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
         <div class="row m-3">
@@ -84,10 +88,10 @@
             <div class="col-5 p-3 bg-light rounded">
                 <h2>Your Feed:</h2>
                 <div class="card">
-                    <div class="card-body" style="height: 200px">
+                    <div class="card-body">
                     {% if whispers %}
                         {% for dec_whisper in dec_whispers | sort(attribute='message_id', reverse=True) %}
-                            <p class="font-weight-bold mt-5">{{dec_whisper['first_name']}} {{dec_whisper['last_name']}} whispers:</p>
+                            <p class="font-weight-bold">{{dec_whisper['first_name']}} {{dec_whisper['last_name']}} whispers:</p>
                             <!-- <p>Hello World!!!</p> -->
                             <p>{{dec_whisper['message']}}</p>
                             <p>{{dec_whisper['likes']}} people like this</p>

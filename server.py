@@ -474,7 +474,7 @@ def user_profile(user_id):
     mysql = connectToMySQL(DATABASE)
     query = "SELECT follower_id FROM followers WHERE followed_id = %(u_id)s"
     data = {
-        'u_id': user_id
+        'u_id': session['user_id']
     }
     follower_users = mysql.query_db(query, data)
     follower_ids = [data['follower_id'] for data in follower_users]
@@ -483,24 +483,24 @@ def user_profile(user_id):
     mysql = connectToMySQL(DATABASE)
     query = "SELECT users.user_id, users.first_name, users.last_name, users.avatar FROM users WHERE users.user_id != %(u_id)s"
     data = {
-        'u_id': user_id
+        'u_id': session['user_id']
     }
     users = mysql.query_db(query, data)
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT user_key FROM dojo_messages.keys WHERE user_id = %(u_id)s"
+    query = "SELECT user_key FROM f8x0a94mtjmenwxa.keys WHERE user_id = %(u_id)s"
     data = {
-        'u_id': user_id
+        'u_id': session['user_id']
     }
     key_data = mysql.query_db(query, data)
     if key_data:
         key_data = key_data[0]
 
     # mysql = connectToMySQL(DATABASE)
-    # query = """SELECT messages.author_id, messages.message_id, messages.message, dojo_messages.keys.user_key, users.first_name, users.last_name, users.user_id 
+    # query = """SELECT messages.author_id, messages.message_id, messages.message, f8x0a94mtjmenwxa.keys.user_key, users.first_name, users.last_name, users.user_id 
     #             FROM messages 
-    #             JOIN dojo_messages.keys 
-    #             ON messages.author_id = dojo_messages.keys.user_id
+    #             JOIN f8x0a94mtjmenwxa.keys 
+    #             ON messages.author_id = f8x0a94mtjmenwxa.keys.user_id
     #             JOIN users ON messages.author_id = users.user_id 
     #             LEFT JOIN user_likes 
     #             ON messages.message_id = user_likes.message_like_id"""
@@ -527,10 +527,10 @@ def user_profile(user_id):
     # for i in following_followed:
     print(f"following_followed iteration: {following_followed}")
     mysql = connectToMySQL(DATABASE)
-    query = """SELECT messages.author_id, messages.message_id, messages.message, dojo_messages.keys.user_key, users.first_name, users.last_name, users.user_id 
+    query = """SELECT messages.author_id, messages.message_id, messages.message, f8x0a94mtjmenwxa.keys.user_key, users.first_name, users.last_name, users.user_id 
                 FROM messages 
-                JOIN dojo_messages.keys 
-                ON messages.author_id = dojo_messages.keys.user_id
+                JOIN f8x0a94mtjmenwxa.keys 
+                ON messages.author_id = f8x0a94mtjmenwxa.keys.user_id
                 JOIN users ON messages.author_id = users.user_id 
                 LEFT JOIN user_likes 
                 ON messages.message_id = user_likes.message_like_id"""
@@ -556,9 +556,9 @@ def user_profile(user_id):
             k['message'] = k['message'].decode("utf-8")
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT user_key FROM dojo_messages.keys WHERE user_id = %(u_id)s"
+    query = "SELECT user_key FROM f8x0a94mtjmenwxa.keys WHERE user_id = %(u_id)s"
     data = {
-        'u_id': user_id
+        'u_id': session['user_id']
     }
     key_data = mysql.query_db(query, data)
     if key_data:

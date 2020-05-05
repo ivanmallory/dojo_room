@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#index{
+    background: url(../images/dojo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: black;
+    background-attachment: fixed;
+}
+#welcome{
+    font-family: 'Rock Salt', cursive;
+    font-size: 25px;
+    margin-top: 2rem;
+}
+#sReg{
+    margin-top: 20px;
+}
+.index_hr{
+    border: 2px solid white;
+    width: 215px;
+}
+#register {
+    display: none;
+    margin: 30px 0 0 80px;
+    line-height: 1rem;
+}
+#login{
+    margin: 30px 0 0 80px;
+}
+input.form-control{
+    width: 220px;
+}
+@media(min-width: 768px){
+    #welcome{
+        font-size: 35px;
+    }
+    .index_hr{
+        border: 2px solid white;
+        width: 295px;
+    }
+    #register {
+        margin: 100px 0 0 480px;
+    }
+    #login{
+        margin: 100px 0 0 480px;
+    }
+    input.form-control{
+        width: 300px;
+    }
+    #sReg{
+        margin-top: 40px;
+        font-size: larger;
+    }
+}
+@media(min-width: 1024px){
+    #welcome{
+        font-size: 40px;
+    }
+    #register {
+        margin: 60px 0 0 72rem;
+    }
+    #login{
+        margin: 60px 0 0 72rem;
+    }
+}
+@media(min-width: 1200px){
+    #register {
+        margin: 60px 0 0 80rem;
+    }
+    #login{
+        margin: 60px 0 0 80rem;
+    }
+}
+@media(min-width: 1600px){
+    #register {
+        margin: 60px 0 0 100rem;
+    }
+    #login{
+        margin: 60px 0 0 100rem;
+    }
+}
+@media(min-width: 2000px){
+    #welcome{
+        font-size: 40px;
+    }
+    #register {
+        margin: 60px 0 0 121rem;
+    }
+    #login{
+        margin: 60px 0 0 121rem;
+    }
+}
+@media(min-width: 2400px){
+    #register {
+        margin: 60px 0 0 140rem;
+    }
+    #login{
+        margin: 60px 0 0 140rem;
+    }
+    #index_contact{
+        margin-top: 60px;
+        font-size: 30px;
+    }
+}
+@media(min-width: 2560px){
+    #welcome{
+        font-size: 60px;
+    }
+    #register {
+        margin: 60px 0 0 142rem;
+    }
+    #login{
+        margin: 60px 0 0 142rem;
+    }
+}

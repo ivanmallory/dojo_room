@@ -34,6 +34,118 @@
 input.form-control{
     width: 220px;
 }
+/* Dashboard Page */
+#dashboard{
+    background: url(../images/japan.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 90% 50%;
+    background-attachment: fixed;
+}
+#header, #footer{
+    background-color: black;
+}
+#header_text{
+    font-family: 'Rock Salt', cursive;
+    font-size: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    text-decoration: none;
+}
+#header_text a:hover{
+    color: #FFD700!important;
+}
+#dojo{
+    display: none;
+}
+#nav_row{
+    background-color: #17a2b8;
+}
+#nav_tabs{
+    margin: 20px 0 20px 0;
+}
+#nav_tabs a{
+    font-size: 18px;
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+}
+#nav_tabs a:hover{
+    color: #FFD700;
+}
+#avatar_section{
+    text-align: center;
+}
+#avatar{
+    width: 250px;
+    margin: 20px;
+}
+.custom-file-label{
+    width: 250px;
+    margin-left: 63px;
+    text-align: left;
+}
+#error{
+    color: white;
+    background-color: #dc3545;
+}
+#bioBody{
+    color: white;
+    background-color: #343a40;
+    padding: 15px;
+    margin: 20px;
+    text-align: center;
+}
+#bio-input-text{
+    border-radius: 5px;
+    width: 300px;
+    min-height: 50px;
+    max-height: 300px;
+    text-align: left;
+}
+#welcome_message{
+    display: none;
+}
+#update_bio{
+    margin-top: 15px;
+    font-size: 18px;
+}
+#followers{
+    padding: 15px;
+    min-height: 300px;
+    max-height: 600px;
+}
+#show{
+    margin: 30px 0 0 110px;
+    font-size: 18px;
+}
+#whisper{
+    padding: 15px;
+    max-height: 500px;
+    color: white;
+}
+#post_whisper{
+    margin: 10px 125px;
+    padding: 5px 30px 5px 30px;
+    font-size: 18px;
+}
+#feed{
+    margin-top: 15px;
+}
+#feed_title{
+    margin: 15px auto;
+    color: white;
+    width: 600px;
+    padding: 15px;
+    background-color: #343a40;
+    border-radius: 5px;
+    text-align: center;
+}
+#delete, #follow, #unfollow{
+    text-decoration: none;
+    color: white;
+}
 @media(min-width: 768px){
     #welcome{
         font-size: 35px;
@@ -42,10 +154,7 @@ input.form-control{
         border: 2px solid white;
         width: 295px;
     }
-    #register {
-        margin: 100px 0 0 480px;
-    }
-    #login{
+    #register, #login {
         margin: 100px 0 0 480px;
     }
     input.form-control{
@@ -55,31 +164,98 @@ input.form-control{
         margin-top: 40px;
         font-size: larger;
     }
+    /*Dashboard */
+    #header_text{
+        font-size: 40px;
+    }
+    #dojo{
+        display: inline-block;
+        color: white;
+        width: 100px;
+    }
+    #nav_tabs a{
+        font-size: 22px;
+        margin: 40px;
+        text-align: center;
+    }
+    .custom-file-label{
+        margin-left: 260px;
+    }
+    #bioBody{
+        text-align: left;
+    }
+    #update_bio{
+        margin: 20px 0 0 320px;
+    }
+    #show{
+        margin: 30px 0 0 315px;
+    }
+    .card{
+        width: 600px;
+        max-height: 300px;
+    }
+    #feed_card{
+        max-height: 1200px;
+        margin-left: 85px;
+    }
+    #post_whisper{
+        margin: 15px 0px;
+        padding: 5px 30px;
+        font-size: 18px;
+    }
+
 }
 @media(min-width: 1024px){
     #welcome{
         font-size: 40px;
     }
-    #register {
+    #register, #login {
         margin: 60px 0 0 72rem;
     }
-    #login{
-        margin: 60px 0 0 72rem;
+    #avatar_section{
+        text-align: left;
+    }
+    #avatar{
+        width: 300px;
+        margin: 20px;
+    }
+    .custom-file-label{
+        margin-left: 20px;
+        width: 300px
+    }
+    #upload_btn{
+        margin: 15px 20px;
+    }
+    #bioBody{
+        width: 300px;
+        margin: 20px 35px;
+        border-radius: 5px;
+    }
+    #update_bio{
+        margin: 15px 0;
+    }
+    #show{
+        margin-left: 615px;
+    }
+    #feed_card{
+        max-height: 1200px;
+        margin-left: 400px;
+    }
+    #welcome_message{
+        display: inline-block;
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        margin-top: 60px;
     }
 }
 @media(min-width: 1200px){
-    #register {
-        margin: 60px 0 0 80rem;
-    }
-    #login{
+    #register, #login {
         margin: 60px 0 0 80rem;
     }
 }
 @media(min-width: 1600px){
-    #register {
-        margin: 60px 0 0 100rem;
-    }
-    #login{
+    #register, #login {
         margin: 60px 0 0 100rem;
     }
 }
@@ -87,18 +263,12 @@ input.form-control{
     #welcome{
         font-size: 40px;
     }
-    #register {
-        margin: 60px 0 0 121rem;
-    }
-    #login{
+    #register, #login {
         margin: 60px 0 0 121rem;
     }
 }
 @media(min-width: 2400px){
-    #register {
-        margin: 60px 0 0 140rem;
-    }
-    #login{
+    #register, #login {
         margin: 60px 0 0 140rem;
     }
     #index_contact{
@@ -110,10 +280,16 @@ input.form-control{
     #welcome{
         font-size: 60px;
     }
-    #register {
+    #register, #login {
         margin: 60px 0 0 142rem;
     }
-    #login{
-        margin: 60px 0 0 142rem;
+    #page_header{
+        font-family: 'Rock Salt', cursive;
+        font-size: 60px;
+        margin-top: 2rem;
+    }
+    #dojo{
+        width: 100px;
+        margin-top: 40px;
     }
 }

@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Follow</title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container-fluid bg-light">
-        <div class="row">
-            <div class="col-7 bg-info ml-5 mt-3 rounded">
-                <h3 class="display-4 m-4 text-white">Dojo Room</h3>
+<body id="users">
+    <div class="container-fluid">
+        <div class="row text-center" id="header">
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
             </div>
-            <div class="col-3 text-center ml-5 mt-5">
-                <a class="h3 text-decoration-none text-info p-3 border-right border-dark" href="/contact_us">Contact Us</a>
-                <a class="h3 text-decoration-none text-info p-3" href="/logout">Logout</a>
+            <div class="col-sm-2 col-md-8">
+                <h2 id="header_text"><a class="text-white text-decoration-none" href="/dashboard">Dojo Room</a></h2>
+            </div>
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
+            </div>
+        </div>
+        <div class="row text-center" id="nav_row">
+            <div class="col-sm-12 col-md-12" id="nav_tabs">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/ninjas">Ninjas</a>
+                <a href="/contact_us">Contact</a>
+                <a href="/logout">Logout</a>
             </div>
         </div>
         <hr class="bg-dark">
@@ -62,9 +73,15 @@
                 </table>
             </div>
         </div>
-        <div class="row bg-info m-4 rounded">
-            <div class="col text-center">
-                <button class="btn m-3 bg-dark"><a class="h5 text-decoration-none text-white" href="/dashboard">Dashboard</a></button>
+        <div class="row text-center" id="footer">
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
+            </div>
+            <div class="col-sm-2 col-md-8">
+                <h2 id="header_text"><a class="text-white text-decoration-none" href="/dashboard">Dojo Room</a></h2>
+            </div>
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
             </div>
         </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"

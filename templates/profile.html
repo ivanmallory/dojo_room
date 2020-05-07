@@ -2,92 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container-fluid p-1" style="background-image: url({{ url_for('static', filename='images/japan.jpg') }})">
-        <div class="row">
-            <div class="col-7 bg-info ml-5 mt-3 rounded">
-                <h3 class="display-4 m-4 text-white">Dojo Room</h3>
+<body id="user_profile">
+    <div class="container-fluid">
+        <div class="row text-center" id="header">
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
             </div>
-            <div class="col-3 text-center ml-5 mt-5">
-                <a class="h3 text-decoration-none text-white p-3 border-right border-dark" href="/ninjas">Ninjas</a>
-                <a class="h3 text-decoration-none text-white p-3" href="/logout">Logout</a>
+            <div class="col-sm-2 col-md-8">
+                <h2 id="header_text"><a class="text-white text-decoration-none" href="/dashboard">Dojo Room</a></h2>
+            </div>
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
             </div>
         </div>
-        <hr class="bg-dark">
-        <div class="row">
-            <div class="col-2 mx-4 mt-3">
+        <div class="row text-center" id="nav_row">
+            <div class="col-sm-12 col-md-12" id="nav_tabs">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/ninjas">Ninjas</a>
+                <a href="/contact_us">Contact</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-10 col-lg-12 col-xl-12" id="avatar_section">
                 <!-- <img class="ml-2" src="../images/dojo.jpeg" alt="A picture of dojo" width="200px" height="200px"> -->
                 {% if user_data['avatar'] %}
-                    <img class="ml-2 img-fluid img-thumbnail" src="/static/images/{{user_data['avatar']}}" alt="Hello World" width="200px" height="300px"> 
+                    <img class="img-fluid img-thumbnail" src="/static/images/{{user_data['avatar']}}" alt="Hello World" id="avatar"> 
                 {% else %}
-                    <img class="ml-2 img-fluid img-thumbnail" src="/static/images/ninja.jpg" alt="Hello World" width="200px" height="300px">
+                    <img class="img-fluid img-thumbnail" src="/static/images/ninja.png" alt="Hello World" id="avatar">
                 {% endif %}
             </div>
-            <div class="col-5 ml-5 mt-5">
-                <div class="bg-light p-3 rounded">
-                    <h3>{{user_data['first_name']}} {{user_data['last_name']}}'s Bio:</h3>
-                    <div class="card m-3 text-dark">
-                        <div class="card-body">
-                            {% if user_data['bio'] %}
-                                <p>{{user_data['bio']}}</p>
-                            {% else %}
-                                <p>This ninja is in the shadows!</p>
-                            {% endif %}
-                        </div>
+            <div class="col-sm-12 col-md-10 col-lg-5 col-xl-4" id="bioBody">
+                <h3>{{user_data['first_name']}} {{user_data['last_name']}}'s Bio:</h3>
+                <div class="card text-dark">
+                    <div class="card-body">
+                        {% if user_data['bio'] %}
+                            <p>{{user_data['bio']}}</p>
+                        {% else %}
+                            <p>This ninja is in the shadows!</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col p-3 mx-3">
+        <div class="row" id="followers">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                 <h5>Ninjas Who Follow {{user_data['first_name']}}:</h5>
                 <!-- <img class="mt-4 ml-5" src="../images/dojo.jpeg" width="100px" height="100px"> -->
                 {% for user in users %}
                     {% if user['user_id'] in follower_ids %}
                         {% if user['user_id'] == session['user_id'] %}
-                            <a href="/dashboard"><img class="img-thumbnail img-fluid" src="/static/images/{{user['avatar']}}" alt="Hello World" width="100px" height="100px"></a>
+                            <a href="/dashboard"><img class="img-thumbnail img-fluid" src="/static/images/{{user['avatar']}}" alt="Hello World" id="mini_avatar"></a>
                         {% else %}
-                            <a href="/user_profile/{{user['user_id']}}"><img class="img-thumbnail img-fluid" src="/static/images/{{user['avatar']}}" alt="Hello World" width="100px" height="100px"></a>
+                            <a href="/user_profile/{{user['user_id']}}"><img class="img-thumbnail img-fluid" src="/static/images/{{user['avatar']}}" alt="Hello World" id="mini_avatar"></a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
-        <button class="btn btn-info ml-4" id ="show">Write A Whisper</button>
-        <div class="row m-4" id = "whisper">
-            <div class="col-7 p-3 bg-dark rounded text-white">
+        <div class="row justify-content-center">
+            <button class="btn btn-info" id ="show">Write A Whisper</button>
+        </div>
+        <div class="row justify-content-center" id = "whisper">
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-4 bg-dark rounded">
                 <h2>Whisper... Share Your Secret Here:</h2>
                 <form action="/write_whisper_profile" method="POST">
                     <textarea class="form-control" style="height: 100px" name="a_whisper" placeholder="Shhh..."></textarea>
-                    <button class="btn bg-info text-white mt-3" type="submit" value="submit">Post</button>
+                    <button class="btn bg-info text-white" id="post_whisper" type="submit" value="submit">Post</button>
                 </form>
             </div>
         </div>
-        <hr>
-        <div class="row m-4" >
-            <div class="col-7 p-3 bg-dark rounded">
-                <h2 class="text-white">Your Feed:</h2>
+        <div class="row justify-content-center" id="feed">
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-4">
                 <div class="card">
+                    <h2 id="feed_title">Your Feed</h2>
                     <div class="card-body">
                     {% if whispers %}
-                        {% for dec_whisper in dec_whispers | sort(attribute='message_id', reverse=True) %}
+                        {% for dec_whisper in dec_whispers %}
                             <p class="font-weight-bold">{{dec_whisper['first_name']}} {{dec_whisper['last_name']}} whispers:</p>
                             <!-- <p>Hello World!!!</p> -->
                             <p>{{dec_whisper['message']}}</p>
                             <p>{{dec_whisper['likes']}} people like this</p>
                             {% if dec_whisper.author_id == session['user_id'] %}
-                                <p><button class="btn bg-danger"><a class="text-decoration-none text-white" href="/delete_whisper/{{dec_whisper['message_id']}}">Delete</a></button></p>
+                                <p><button class="btn bg-danger"><a id="delete" href="/delete_whisper/{{dec_whisper['message_id']}}">Delete</a></button></p>
                             {% endif %}
                             {% if dec_whisper.author_id != session['user_id'] %}
                                 {% if dec_whisper['author_id'] not in followed_ids %}
-                                    <p><button class="btn bg-info" id = "bFollow"><a class="text-decoration-none text-white" href="/follow/{{dec_whisper['author_id']}}">Follow {{dec_whisper['first_name']}} {{dec_whisper['last_name']}}</a></button id></p>
+                                    <p><button class="btn bg-info" id = "bFollow"><a id="follow" href="/follow/{{dec_whisper['author_id']}}">Follow {{dec_whisper['first_name']}} {{dec_whisper['last_name']}}</a></button id></p>
                                 {% else %}
-                                <p><button class="btn bg-info" id = "bUnfollow"><a class="text-decoration-none text-white" href="/unfollow/{{dec_whisper['author_id']}}">Unfollow {{dec_whisper['first_name']}} {{dec_whisper['last_name']}}</a></button></p>
+                                <p><button class="btn bg-info" id = "bUnfollow"><a id="unfollow" href="/unfollow/{{dec_whisper['author_id']}}">Unfollow {{dec_whisper['first_name']}} {{dec_whisper['last_name']}}</a></button></p>
                             {% endif %}
                                 {% endif %}
                         {% endfor %}
@@ -103,10 +112,15 @@
                 <p><a href="/edit_whisper/{#{}#}"><button>Edit</button></a></p> -->
             </div>
         </div>
-        <div class="row bg-info m-4 rounded">
-            <div class="col text-center">
-                <button class="btn m-3 bg-dark"><a class="h5 text-decoration-none text-white" href="/dashboard">Dashboard</a></button>
-                <button class="btn m-3 bg-dark"><a class="h5 text-decoration-none text-white" href="/contact_us">Contact Us</a></button>
+        <div class="row text-center" id="footer">
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
+            </div>
+            <div class="col-sm-2 col-md-8">
+                <h2 id="header_text"><a class="text-white text-decoration-none" href="/dashboard">Dojo Room</a></h2>
+            </div>
+            <div class="col-sm-2 col-md-2">
+                <img src="../static/images/dojo2.png" id="dojo" alt="A dojo icon">
             </div>
         </div>
     </div>

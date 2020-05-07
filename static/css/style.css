@@ -10,6 +10,7 @@
     background-position: 50% 50%;
     background-color: black;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 #welcome{
     font-family: 'Rock Salt', cursive;
@@ -35,7 +36,7 @@ input.form-control{
     width: 220px;
 }
 /* Dashboard Page */
-#dashboard{
+#dashboard, #user_profile{
     background: url(../images/japan.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,13 +79,14 @@ input.form-control{
     text-align: center;
 }
 #avatar{
-    width: 250px;
     margin: 20px;
+    width: 200px;
 }
 .custom-file-label{
-    width: 250px;
-    margin-left: 63px;
     text-align: left;
+}
+#upload_btn{
+    margin: 20px;
 }
 #error{
     color: white;
@@ -95,7 +97,8 @@ input.form-control{
     background-color: #343a40;
     padding: 15px;
     margin: 20px;
-    text-align: center;
+    text-align: left;
+    border-radius: 5px;
 }
 #bio-input-text{
     border-radius: 5px;
@@ -115,9 +118,17 @@ input.form-control{
     padding: 15px;
     min-height: 300px;
     max-height: 600px;
+    color: #FFD700;
+    background-color: rgba(0,0,0,0.6);
+}
+.usernames{
+    font-size: 18px;
+}
+#mini_avatar{
+    width: 100px;
 }
 #show{
-    margin: 30px 0 0 110px;
+    margin: 20px;
     font-size: 18px;
 }
 #whisper{
@@ -126,25 +137,52 @@ input.form-control{
     color: white;
 }
 #post_whisper{
-    margin: 10px 125px;
+    margin: 10px 107px;
     padding: 5px 30px 5px 30px;
     font-size: 18px;
 }
 #feed{
     margin-top: 15px;
+    min-height: 400px;
 }
 #feed_title{
-    margin: 15px auto;
     color: white;
-    width: 600px;
     padding: 15px;
     background-color: #343a40;
-    border-radius: 5px;
     text-align: center;
+    border-radius: 3px;
 }
 #delete, #follow, #unfollow{
     text-decoration: none;
     color: white;
+}
+
+/*Users Page */
+
+#users{
+    background-color: #343a40;
+}
+#navbar{
+    margin-top: 30px;
+}
+.table-responsive{
+    margin-top: 30px;
+}
+
+/*Contact Page */
+#contact {
+    background-color: #343a40;
+}
+#map {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+#about{
+    margin: 10px;
+}
+#contact_info{
+    margin: 10px;
 }
 @media(min-width: 768px){
     #welcome{
@@ -178,25 +216,14 @@ input.form-control{
         margin: 40px;
         text-align: center;
     }
-    .custom-file-label{
-        margin-left: 260px;
-    }
     #bioBody{
         text-align: left;
     }
     #update_bio{
-        margin: 20px 0 0 320px;
+        margin: 15px 0;
     }
-    #show{
-        margin: 30px 0 0 315px;
-    }
-    .card{
-        width: 600px;
+    #bio_card{
         max-height: 300px;
-    }
-    #feed_card{
-        max-height: 1200px;
-        margin-left: 85px;
     }
     #post_whisper{
         margin: 15px 0px;
@@ -213,18 +240,15 @@ input.form-control{
         margin: 60px 0 0 72rem;
     }
     #avatar_section{
-        text-align: left;
+        text-align: left!important;
     }
     #avatar{
         width: 300px;
         margin: 20px;
     }
-    .custom-file-label{
+    .custom-file{
+        width: 50%!important;
         margin-left: 20px;
-        width: 300px
-    }
-    #upload_btn{
-        margin: 15px 20px;
     }
     #bioBody{
         width: 300px;
@@ -234,12 +258,11 @@ input.form-control{
     #update_bio{
         margin: 15px 0;
     }
-    #show{
-        margin-left: 615px;
+    #followers h5{
+        font-size: 40px;
     }
-    #feed_card{
-        max-height: 1200px;
-        margin-left: 400px;
+    .usernames{
+        font-size: 30px;
     }
     #welcome_message{
         display: inline-block;
@@ -248,10 +271,26 @@ input.form-control{
         font-size: 40px;
         margin-top: 60px;
     }
+    #map {
+        width: 400px;
+        height: 400px;
+        margin: auto;
+    }
+    #mini_avatar{
+        width: 200px;
+        margin: 20px;
+    }
 }
 @media(min-width: 1200px){
     #register, #login {
         margin: 60px 0 0 80rem;
+    }
+    #header_text{
+        font-size: 80px;
+        margin-top: 3rem;
+    }
+    #dojo{
+        width: 200px;
     }
 }
 @media(min-width: 1600px){
@@ -265,6 +304,28 @@ input.form-control{
     }
     #register, #login {
         margin: 60px 0 0 121rem;
+    }
+    #nav_tabs a{
+        font-size: 30px;
+        margin-left: 30px;
+    }
+    #welcome_message{
+        font-size: 60px;
+    }
+    .custom-file{
+        width: 30%!important;
+        margin-left: 20px;
+    }
+    #map {
+        width: 600px;
+        height: 600px;
+        margin: auto;
+    }
+    #error{
+        color: white;
+        background-color: #dc3545;
+        margin-left: 20px;
+        padding: 10px;
     }
 }
 @media(min-width: 2400px){
@@ -283,13 +344,11 @@ input.form-control{
     #register, #login {
         margin: 60px 0 0 142rem;
     }
-    #page_header{
-        font-family: 'Rock Salt', cursive;
-        font-size: 60px;
-        margin-top: 2rem;
-    }
     #dojo{
-        width: 100px;
-        margin-top: 40px;
+        width: 200px;
+        margin-top: 1rem;
+    }
+    #avatar{
+        width: 400px;
     }
 }

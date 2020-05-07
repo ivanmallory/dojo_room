@@ -181,7 +181,7 @@ def on_messages_dashboard():
     print(follower_ids)
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT users.user_id, users.first_name, users.last_name FROM users WHERE users.user_id != %(u_id)s"
+    query = "SELECT users.user_id, users.first_name, users.last_name, users.avatar FROM users WHERE users.user_id != %(u_id)s"
     data = {
         'u_id': session['user_id']
     }
@@ -264,7 +264,7 @@ def on_messages_dashboard():
     if key_data:
         key_data = key_data[0]
 
-    return render_template("dashboard.html", user_data=user_data, whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, followed_ids=followed_ids)
+    return render_template("dashboard.html", user_data=user_data, users=users, whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, followed_ids=followed_ids, follower_ids = follower_ids)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -488,7 +488,7 @@ def user_profile(user_id):
     users = mysql.query_db(query, data)
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT user_key FROM f8x0a94mtjmenwxa.keys WHERE user_id = %(u_id)s"
+    query = "SELECT user_key FROM dojo_messages.keys WHERE user_id = %(u_id)s"
     data = {
         'u_id': session['user_id']
     }
@@ -497,10 +497,10 @@ def user_profile(user_id):
         key_data = key_data[0]
 
     # mysql = connectToMySQL(DATABASE)
-    # query = """SELECT messages.author_id, messages.message_id, messages.message, f8x0a94mtjmenwxa.keys.user_key, users.first_name, users.last_name, users.user_id 
+    # query = """SELECT messages.author_id, messages.message_id, messages.message, dojo_messages.keys.user_key, users.first_name, users.last_name, users.user_id 
     #             FROM messages 
-    #             JOIN f8x0a94mtjmenwxa.keys 
-    #             ON messages.author_id = f8x0a94mtjmenwxa.keys.user_id
+    #             JOIN dojo_messages.keys 
+    #             ON messages.author_id = dojo_messages.keys.user_id
     #             JOIN users ON messages.author_id = users.user_id 
     #             LEFT JOIN user_likes 
     #             ON messages.message_id = user_likes.message_like_id"""
@@ -527,10 +527,10 @@ def user_profile(user_id):
     # for i in following_followed:
     print(f"following_followed iteration: {following_followed}")
     mysql = connectToMySQL(DATABASE)
-    query = """SELECT messages.author_id, messages.message_id, messages.message, f8x0a94mtjmenwxa.keys.user_key, users.first_name, users.last_name, users.user_id 
+    query = """SELECT messages.author_id, messages.message_id, messages.message, dojo_messages.keys.user_key, users.first_name, users.last_name, users.user_id 
                 FROM messages 
-                JOIN f8x0a94mtjmenwxa.keys 
-                ON messages.author_id = f8x0a94mtjmenwxa.keys.user_id
+                JOIN dojo_messages.keys 
+                ON messages.author_id = dojo_messages.keys.user_id
                 JOIN users ON messages.author_id = users.user_id 
                 LEFT JOIN user_likes 
                 ON messages.message_id = user_likes.message_like_id"""
@@ -556,15 +556,15 @@ def user_profile(user_id):
             k['message'] = k['message'].decode("utf-8")
 
     mysql = connectToMySQL(DATABASE)
-    query = "SELECT user_key FROM f8x0a94mtjmenwxa.keys WHERE user_id = %(u_id)s"
+    query = "SELECT user_key FROM dojo_messages.keys WHERE user_id = %(u_id)s"
     data = {
         'u_id': session['user_id']
     }
     key_data = mysql.query_db(query, data)
     if key_data:
         key_data = key_data[0]
-    
-    return render_template("profile.html", user_data = user_data[0], whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, users = users, followed_ids=followed_ids, follower_ids = follower_ids)
+
+    return render_template("profile.html", user_data=user_data[0], users=users, whispers=whispers, key_data=key_data, dec_whispers=dec_whispers, followed_ids=followed_ids, follower_ids = follower_ids)
 
 @app.route('/write_whisper_profile', methods=['POST'])
 def on_add_whisper_profile():

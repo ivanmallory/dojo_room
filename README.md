@@ -1,6 +1,14 @@
-# dojo_room
+# Dojo Room
 
-Along with two classmates, I constructed a mock “Twitter” platform from the ground up using HTML, CSS, Boostrap, Python, Jinja, and MySQL.  Was responsible for adding HTML content, styling the platform, and building several backend functions. Integrated Bootstrap CSS to create a simple, yet modern looking interface.  Incorporated Flask and Jinja in order to connect to SQL database, retrieve information, and display it on the platform.  Applied Flask and Jinja to build several backend functions including a function with validation checks for posting messages and a function allowing a user to upload information which would then be stored in the SQL database.
+Collaborated with a couple fellow classmates to construct a full stack social media platform inspired by Twitter
+
+-Managed the complete front end of the project to create a user-friendly experience with easily accessible pages. 
+
+-Applied Bootstrap framework for styling to keep code organized and consistent across the application, thus enhancing the user’s browsing experience.
+
+-Incorporated Flask and Jinja to connect the front end to the back end and retrieve any information that the user uploaded into the database. 
+
+-Applied Bcrypt functionality to increase security by including validation checks for users registering and logging into the application. 
 
 ![alt text](https://github.com/ivanmallory/dojo_room/blob/master/dojoroom1.png?raw=true)
 ![alt text](https://github.com/ivanmallory/dojo_room/blob/master/dojoroom3.png?raw=true)
